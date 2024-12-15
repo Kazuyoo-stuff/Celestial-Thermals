@@ -11,9 +11,7 @@ Celestial-Thermals adalah konfigurasi thermal kustom untuk perangkat Android yan
 
 ---
 
-Features
-
-Optimasi cpuset untuk distribusi tugas.
+## Features
 
 Peningkatan performa gaming dan multitasking.
 
@@ -25,7 +23,7 @@ Mudah dimodifikasi dan dikustomisasi.
 
 ---
 
-Installation
+## Installation
 
 1. Clone repositori ini:
 
@@ -34,19 +32,19 @@ Installation
 
 2. Pindahkan file thermal ke perangkat:
 
-adb push thermal-engine.conf /vendor/etc/
+```adb push thermal-engine.conf /vendor/etc/```
 
 
 3. Reboot perangkat:
 
-adb reboot
+```adb reboot```
 
 
 
 
 ---
 
-Compatibility
+## Compatibility
 
 Diuji pada:
 
@@ -58,18 +56,9 @@ Silakan laporkan kompatibilitas untuk perangkat lainnya.
 
 ---
 
-Contributing
+## Contributing
 
-1. Fork repositori ini.
-
-
-2. Buat branch baru untuk perubahan Anda.
-
-
-3. Buat pull request untuk menambahkan perubahan ke repositori utama.
-
-
-
+@Bias_khaliq for source & other tweak
 
 ---
 
