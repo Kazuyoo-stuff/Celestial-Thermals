@@ -48,7 +48,7 @@ Mudah dimodifikasi dan dikustomisasi.
 
 Diuji pada:
 
-[Device Redmi 9A]
+[Device Redmi 9A](https://m.gsmarena.com/xiaomi_redmi_9a-10279.php)
 
 
 Silakan laporkan kompatibilitas untuk perangkat lainnya.
