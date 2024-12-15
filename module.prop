@@ -1,7 +1,6 @@
-id=CK
-name=Celestial-Kernel 🛸
-version=v1.2 Rebased
+id=CT
+name=Celestial-Thermal🌡️
+version=v1.0
 versionCode=10
 author=Kzyoo | kazuyoo-stuff
-description=Allows to Improve device Performance and efficiency by Adjusting Kernel Settings. Includes Scheduler, Ram Optimation, and I/O to faster and efficiently, without sacrificing stability.
-Device=Universal
+description=[ Unknown...👀 ] | Disables the temperature regulation system on the device, preventing the device from reducing performance due to overheating.
