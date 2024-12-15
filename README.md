@@ -62,7 +62,7 @@ Silakan laporkan kompatibilitas untuk perangkat lainnya.
 
 ---
 
-License
+## License
 
 Lisensi: [MIT License](https://opensource.org/license/MIT)
 
