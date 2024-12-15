@@ -75,7 +75,7 @@ Contributing
 
 License
 
-Lisensi: MIT License
+Lisensi: [MIT License] (https://opensource.org/license/MIT)
 
 
 ---
