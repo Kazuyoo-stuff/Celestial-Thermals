@@ -1,6 +1,6 @@
 ---
 
-Celestial-Thermals
+# Celestial-Thermals 
 
 Advanced Thermal Management for Android Devices
 
@@ -29,7 +29,7 @@ Installation
 
 1. Clone repositori ini:
 
-git clone https://github.com/Kazuyoo-stuff/Celestial-Thermals.git
+```git clone https://github.com/Kazuyoo-stuff/Celestial-Thermals.git```
 
 
 2. Pindahkan file thermal ke perangkat:
@@ -79,7 +79,3 @@ Lisensi: MIT License
 
 
 ---
-
-Lebih simpel, fokus, dan tetap informatif. Apakah ini sesuai?
-
-
