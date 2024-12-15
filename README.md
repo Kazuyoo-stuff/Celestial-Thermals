@@ -6,8 +6,7 @@ Advanced Thermal Management for Android Devices
 
 Overview
 
-Allows to Improve device Performance and efficiency by Adjusting Kernel Settings. Includes Scheduler, Ram Optimation, and I/O to faster and efficiently, without sacrificing stability.
-
+Disables the temperature regulation system on the device, preventing the device from reducing performance due to overheating.
 
 ---
 
