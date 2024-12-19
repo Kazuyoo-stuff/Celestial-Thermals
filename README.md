@@ -13,7 +13,7 @@ Disables the temperature regulation system on the device, preventing the device 
 ## Features
 
 ```
-- Detect thermal in desc
+- Detect thermal in description
 - Disable limit gpu freq
 - Disable cpu hotplug
 - Disable msm_thermal
