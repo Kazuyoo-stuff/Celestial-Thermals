@@ -1,7 +1,0 @@
-#!/system/bin/sh
-# This file will be read by resetprop
-# Example: Change dpi
-# ro.sf.lcd_density=320
-
-ro.vendor.dfps.enable=false
-ro.vendor.smart_dfps.enable=false
