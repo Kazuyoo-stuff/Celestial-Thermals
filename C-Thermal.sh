@@ -82,7 +82,7 @@ write () {
   
 # // disable limit gpu freq
   for gpufreq in /proc/gpufreq; do
-    if [ -d "/proc/gpufreq" ]; then
+    if [ -d "/proc/gpufreq/" ]; then
       write $gpufreq/gpufreq_power_limited "0"
       write $gpufreq/gpufreq_limited_thermal_ignore "1"
       write $gpufreq/gpufreq_limited_oc_ignore "1"
@@ -116,7 +116,7 @@ write () {
    done
   
 # Stops and kills processes of thermal related binaries
-  for thermbin in $(find /system/bin/ /system/vendor/bin/ -name *therma* | sed 's#.*/##'); do
+  for thermbin in $(find /system/bin/ /system/vendor/bin/ -name '*thermal*' | sed 's#.*/##'); do
     pid=$(ps | grep "$thermbin" | awk '{print $2}')
     if [ ! -z "$pid" ]; then
         su -c kill -9 "$pid"
@@ -140,7 +140,7 @@ write () {
   done
   
 # Stopping any thermal processes found
-  for therminit in $(find /system/etc/init/ /system/vendor/etc/init/ -name '*therma*'); do
+  for therminit in $(find /system/etc/init/ /system/vendor/etc/init/ -name '*thermal*'); do
     pid=$(ps | grep "$therminit" | awk '{print $2}')
     if [ ! -z "$pid" ]; then
         su -c kill -9 "$pid"
