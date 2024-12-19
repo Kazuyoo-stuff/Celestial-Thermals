@@ -21,21 +21,18 @@ Disables the temperature regulation system on the device, preventing the device 
 - Disable thermal service
 - Disable other thermal
 - Remove cache thermal
+- Disable thermal pid in /proc
 - Stops and kills processes thermal binaries
 - Reset init.svc.*thermal*
 - Clearing pid thermal
 - Stop any thermal processes found
 - Make all thermal related files inaccessible
 - Disable I/O statistics accounting
+- Configuration temperature power supply
+- Gpu Throttling Disabler
+- Configuration thermal message sconfig "10"
+- directory hwmon set access permission to inaccessible
 ```
-
----
-
-## Installation
-
-- Flash In Magisk Or Ksu
-
----
 
 ## Compatibility
 
@@ -46,18 +43,14 @@ Tested on:
 
 Please report compatibility for other devices.
 
+---
+
+## Thanks To
+
+- @Bias_khaliq & @WeAreRavenS
 
 ---
 
-## Contributing
+## Donation
 
-@Bias_khaliq for source & other tweak
-
----
-
-## License
-
-Lisensi: [MIT License](https://opensource.org/license/MIT)
-
-
----
+- [SociaBuzz](https://sociabuzz.com/dikyganteng_/tribe)
