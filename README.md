@@ -1,6 +1,6 @@
 ---
 
-![LOGO](https://github.com/Kazuyoo-stuff/Celestial-Thermals/blob/d979d3c611efced8568897111801cd470506b127/logo.jpg)
+![LOGO](https://github.com/Kazuyoo-stuff/Celestial-Thermals/blob/3437c4dfd38f824c945803a096aace0c6ac164cb/media/logo.jpg)
 
 Advanced Thermal Management for Android Devices
 
