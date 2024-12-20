@@ -23,7 +23,9 @@ Disables the temperature regulation system on the device, preventing the device 
 - Remove cache thermal
 - Disable thermal pid in /proc
 - Stops and kills processes thermal binaries
-- Reset init.svc.*thermal*
+- Disable init.svc.*thermal* properties to stopped
+- Disable sys.*thermal* properties to 0
+- Disable persist.device_config.aconfig_flags.power.*thermal* properties to false 
 - Clearing pid thermal
 - Stop any thermal processes found
 - Make all thermal related files inaccessible
