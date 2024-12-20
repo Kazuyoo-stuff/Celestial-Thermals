@@ -137,6 +137,8 @@ write () {
     current_status=$(getprop "$thermsys")
     if [ "$current_status" = '1' ]; then
       resetprop -n "$thermsys" "0"
+    elif [[ "$current_status" == "running" ]]; then
+       resetprop -n "$thermsys" "stopped"
     fi
   done
  
