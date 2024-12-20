@@ -99,10 +99,10 @@ write () {
 # // Disable msm_thermal
   find /sys -name enabled | grep 'msm_thermal' | while IFS= read -r msm_thermal_status; do
     if [ "$(cat "$msm_thermal_status")" = 'Y' ]; then
-      write $msm_thermal_status "N"
+      write "$msm_thermal_status" "N"
     fi
     if [ "$(cat "$msm_thermal_status")" = '1' ]; then
-      write $msm_thermal_status "0"
+      write "$msm_thermal_status" "0"
     fi
   done
   
@@ -126,22 +126,23 @@ write () {
   for thermsvc in $(getprop | grep init.svc.*thermal* | cut -d: -f1 | sed 's/[][]//g'); do
     current_status=$(getprop "$thermsvc")
     if [[ "$current_status" == "running" ]]; then
-       resetprop -n $thermsvc "restarting"
+       resetprop -n "$thermsvc" "restarting"
     elif [[ "$current_status" == "stopped" ]]; then
-       resetprop -n $thermsvc "stopped"
+       resetprop -n "$thermsvc" "stopped"
     fi
   done
   
 # Disable sys.*thermal* properties to stopped
   for thermsys in $(getprop | grep sys.*thermal* | cut -d: -f1 | sed 's/[][]//g'); do
-    if [ "$thermsys" = '1' ]; then
+    current_status=$(getprop "$thermsys")
+    if [ "$current_status" = '1' ]; then
       resetprop -n "$thermsys" "0"
     fi
   done
  
 # Clearing thermal debug process PID information
   for thermalpid in $(getprop | grep init.svc_debug_pid.*thermal* | cut -d: -f1 | sed 's/[][]//g'); do
-    resetprop -n $thermalpid ""
+    resetprop -n "$thermalpid" ""
   done
   
 # Stopping any thermal processes found
@@ -182,7 +183,7 @@ write () {
 # // Disable thermal zones
   for thermmode in /sys/devices/virtual/thermal/thermal_zone*/mode; do
     chmod -R 644 "$thermmode"
-    write $thermdevmode "disabled"
+    write "$thermdevmode" "disabled"
   done
   
 # temperature power supply (thx to @WeAreRavenS)
