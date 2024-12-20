@@ -48,11 +48,9 @@ write () {
     MODDIR=${0%/*}
   
 # // variable detect thermal
-  thermal=$(getprop | grep "init.svc.*thermal*" | grep "\[running\]" | sed -n 's/.*\[//;s/\].*//p')
+  thermal=$(getprop | grep "*thermal*" | grep "\[running\]" | sed -n 's/.*\[//;s/\].*//p')
   if [[ "$thermal" ]]; then
     THERMAL=running
-  elif [[ -z "$(getprop | grep "init.svc.*thermal*")" ]]; then
-    THERMAL=unknown
   else
     THERMAL=stopped
   fi
@@ -74,9 +72,9 @@ write () {
 # information in module.prop or description module
  end_tweak () {
    if [ "$THERMAL" == "stopped" ]; then
-     sed -Ei 's/^description=(\[.*][[:space:]]*)?/description=[ Thermal Not Stopped...❌ ] /g' "$MODDIR/module.prop"
+     su -lp 2000 -c "cmd notification post -S bigtext -t 'Celestial-Thermals🌡️' tag 'Thermal Status : Stopped'" >/dev/null 2>&1
    else
-     sed -Ei 's/^description=(\[.*][[:space:]]*)?/description=[ Thermal Has Stopped...✅ ] /g' "$MODDIR/module.prop"
+     su -lp 2000 -c "cmd notification post -S bigtext -t 'Celestial-Thermals🌡️' tag 'Thermal Status : Running'" >/dev/null 2>&1
    fi 
  }
   
@@ -134,6 +132,13 @@ write () {
     fi
   done
   
+# Disable sys.*thermal* properties to stopped
+  for thermsys in $(getprop | grep sys.*thermal* | cut -d: -f1 | sed 's/[][]//g'); do
+    if [ "$thermsys" = '1' ]; then
+      resetprop -n "$thermsys" "0"
+    fi
+  done
+ 
 # Clearing thermal debug process PID information
   for thermalpid in $(getprop | grep init.svc_debug_pid.*thermal* | cut -d: -f1 | sed 's/[][]//g'); do
     resetprop -n $thermalpid ""
@@ -160,7 +165,7 @@ write () {
     fi
   done
   
-# Iterate over each directory and set access permission to inaccessible
+# Set hwmon access permission to inaccessible
   for hwmon in /sys/devices/virtual/hwmon/hwmon*; do
     if [ -d "/sys/devices/virtual/hwmon/" ]; then
       chmod -R 000 "$hwmon"
