@@ -22,7 +22,7 @@ Disables the temperature regulation system on the device, preventing the device 
 - Disable other thermal
 - Remove cache thermal
 - Disable thermal pid in /proc
-- Stops and kills processes thermal binaries
+- Stops processes thermal
 - Disable init.svc.*thermal* properties to stopped
 - Disable sys.*thermal* properties to 0
 - Clearing pid thermal
