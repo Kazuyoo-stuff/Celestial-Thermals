@@ -107,19 +107,19 @@ write () {
   done
   
 # Stop thermal process PID via /proc
-  for pid in $(grep -l 'thermal' /proc/*/comm 2>/dev/null | awk -F'/' '{print $3}'); do
-    if [ -z "$thermal_pids" ]; then
-      su -c kill -9 "$pid"
+  for thermprocpid in $(grep -l 'thermal' /proc/*/comm 2>/dev/null | awk -F'/' '{print $3}'); do
+    if [ -z "$thermprocpid" ]; then
+      su -c kill -9 "$thermprocpid"
     fi
    done
-  
-# Stops and kills processes of thermal related binaries
-  for thermbin in $(find /system/bin/ /system/vendor/bin/ -name '*thermal*' | sed 's#.*/##'); do
-    pid=$(ps | grep "$thermbin" | awk '{print $2}')
+   
+# Stops processes thermal
+  for thermvensvc in $(getprop | grep init.svc.thermal* | cut -d: -f1 | sed 's/init.svc.//g' | tr -d '[]' && getprop | grep init.svc.vendor.thermal* | cut -d: -f1 | sed 's/init.svc.//g' | tr -d '[]'); do
+    pid=$(ps | grep "$thermvensvc" | awk '{print $2}')
     if [ ! -z "$pid" ]; then
-        su -c kill -9 "$pid"
+      su -c kill -9 "$pid"
     fi
-        su -c stop "$thermbin"
+      su -c stop "$thermvensvc"
   done
   
 # Reset init.svc.*thermal* properties to stopped
@@ -138,7 +138,7 @@ write () {
     if [ "$current_status" = '1' ]; then
       resetprop -n "$thermsys" "0"
     elif [[ "$current_status" == "running" ]]; then
-       resetprop -n "$thermsys" "stopped"
+      resetprop -n "$thermsys" "stopped"
     fi
   done
  
@@ -151,14 +151,13 @@ write () {
   for therminit in $(find /system/etc/init/ /system/vendor/etc/init/ -name '*thermal*'); do
     pid=$(ps | grep "$therminit" | awk '{print $2}')
     if [ ! -z "$pid" ]; then
-        su -c kill -9 "$pid"
-        su -c stop "$therminit"
+      su -c kill -9 "$pid"
     fi
   done
 
 # Make thermal device related files inaccessible by changing their permissions.
   for thermdevtemp in $(find /sys/devices/virtual/thermal/thermal_zone*/ -name '*temp*' -o -name '*trip_point_*' -o -name '*type*'); do
-      chmod -R 000 "$thermdevtemp"
+    chmod -R 000 "$thermdevtemp"
   done
   
 # Restrict access to thermal files in system-on-chip (SoC) firmware.
